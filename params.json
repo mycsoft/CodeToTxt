@@ -1,0 +1,1 @@
+{"name":"Codetotxt","tagline":"将整个项目的代码转为一个整合的文本文件.软件项目申报时,妈妈再也不用担心我要贴代码了.","body":"# 用法\r\n\r\n```\r\njava -jar CodeToTxt.jar [扫描的目录]\r\n```\r\n\r\n执行完成后,会在[扫描目录下]生成一个以ctt开头的txt文件.\r\n\r\n_当前1.0.1版本只扫描.java文件._\r\n","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
