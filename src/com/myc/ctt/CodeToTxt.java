@@ -119,9 +119,12 @@ public class CodeToTxt {
         FileInputStream in = new FileInputStream(file);
         try {
             byte[] b = new byte[1024];
-            while (in.read(b) > 0) {
-                out.write(b);
+            int i = 0;
+            while ((i = in.read(b)) >= 0) {
+                out.write(b,0,i);
             }
+            //每个文件结尾换行.
+            out.write("\n".getBytes());
         } finally {
             in.close();
         }
