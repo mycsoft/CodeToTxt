@@ -5,12 +5,15 @@
  */
 package com.myc.ctt;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 
 /**
  * 将整个项目的java代码合并为一份txt文档.
@@ -116,15 +119,26 @@ public class CodeToTxt {
 
     private static void scanFile(File file, FileOutputStream out) throws FileNotFoundException, IOException {
         System.out.println("\t" + file.getAbsolutePath());
-        FileInputStream in = new FileInputStream(file);
+//        FileInputStream in = new FileInputStream(file);
+        BufferedReader in = new BufferedReader(new FileReader(file));
         try {
-            byte[] b = new byte[1024];
-            int i = 0;
-            while ((i = in.read(b)) >= 0) {
-                out.write(b,0,i);
+//            byte[] b = new byte[1024];
+//            int i = 0;
+//            while ((i = in.read(b)) >= 0) {
+//                out.write(b,0,i);
+//            }
+            
+            //逐行读取,要去除空行.
+            String line = null;
+            while ((line = in.readLine())!= null) {
+                if (line.trim().length() > 0) {
+                    out.write(line.getBytes());
+                    out.write("\n".getBytes());
+                    
+                }
             }
             //每个文件结尾换行.
-            out.write("\n".getBytes());
+//            out.write("\n".getBytes());
         } finally {
             in.close();
         }
