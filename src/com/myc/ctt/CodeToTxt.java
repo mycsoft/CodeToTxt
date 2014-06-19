@@ -132,9 +132,8 @@ public class CodeToTxt {
             String line = null;
             while ((line = in.readLine())!= null) {
                 if (line.trim().length() > 0) {
-                    out.write(line.getBytes());
-                    out.write("\n".getBytes());
-                    
+                    out.write(line.getBytes("utf-8"));
+                    out.write("\n".getBytes("utf-8"));
                 }
             }
             //每个文件结尾换行.
